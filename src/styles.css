@@ -1,0 +1,190 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+}
+
+.email {
+  width: 20rem;
+}
+
+.selectedItem {
+  border: 2px solid #4ebef2 !important;
+}
+
+.sideBar {
+  flex: 0 0 1;
+  width: 200px;
+  padding: 10px;
+  border-right: 1px solid #111;
+  height: 100vh;
+  background: #e1e1e1;
+}
+
+.sideBarItem {
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: 10px;
+  background: #ccc;
+}
+
+.page {
+  padding: 0 20px;
+  margin: 0 20px 0 20px;
+  border: 1px solid green;
+}
+
+.dropZone {
+  flex: 0 0 auto;
+  height: 5px;
+  transition: 200ms all;
+}
+
+.dropZone:nth-of-type(2n) {
+  display: none;
+}
+
+.dropZone.horizontalDrag {
+  width: 10px;
+  height: auto;
+}
+
+.dropZone:not(.horizontalDrag).isLast {
+  flex: 1 1 auto;
+}
+
+.dropZone:not(.horizontalDrag).active {
+  height: 40px;
+}
+
+.dropZone.horizontalDrag.active {
+  width: 40px;
+}
+
+.dropZone.active,
+.trashDropZone.active {
+  background: #00a2ff;
+  transition: 100ms all;
+}
+
+.component {
+  background: #aaa;
+}
+
+.column {
+  flex: 1 1 100%;
+  border: 1px solid blue;
+}
+
+.toRight * {
+  margin-left: auto;
+}
+
+.columns {
+  display: flex;
+}
+
+.columnContainer {
+  display: flex;
+}
+
+.base {
+  background-color: white;
+  cursor: move;
+}
+
+.row {
+  border: 1px solid red;
+  padding: 0;
+}
+
+.trashDropZone {
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  border: 1px solid purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageContainer {
+  display: flex;
+  padding-top: 20px;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+
+.printTemplate {
+  border: 1px solid black;
+  padding: 0.8rem;
+}
+
+/* componentes: */
+
+.divider {
+  border-top: 3px solid #bbb;
+  width: 100%;
+}
+
+.result {
+  background-color: gray;
+  color: white;
+  border-right: 15px solid green;
+  border-radius: 15px;
+  min-width: 130px;
+  padding: 5px 15px;
+}
+
+.panel {
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.text.p1 {
+  font-size: 1rem;
+}
+.text.p2 {
+  font-size: 1.2rem;
+}
+.text.p3 {
+  font-size: 1.3rem;
+}
+.text.p4 {
+  font-size: 1.4rem;
+}
+.text.p5 {
+  font-size: 1.6rem;
+}
+
+.tooltip {
+  margin-top: -30px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 130px;
+  background-color: rgb(21, 18, 18);
+  gap: 4px;
+  padding: 4px 8px;
+}
+
+.tooltip span {
+  padding: 3px;
+  background-color: rgb(53, 50, 50);
+  color: white;
+}
