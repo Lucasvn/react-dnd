@@ -9,16 +9,16 @@ const style = {
   display: 'flex'
 };
 
-const TextComponent = ({ data }) => {
+const TextComponent = ({ data, component }) => {
   const [isSelected, setIsSelected] = useState(false)
   const handleClick = () => {
     setIsSelected(!isSelected)
   }
 
-  const [classes, setClasses] = useState([]);
+  const [classes, setClasses] = useState(data.styles || []);
 
   return (
-    <div className="TextComponent">
+    <div className="TextComponent"  onFocus={handleClick}>
       { isSelected && (<span className="tooltip">
         <span onClick={() => setClasses(['p1'])}>p1</span>
         <span onClick={() => setClasses(['p2'])}>p2</span>
@@ -26,7 +26,7 @@ const TextComponent = ({ data }) => {
         <span onClick={() => setClasses(['p4'])}>p4</span>
         <span onClick={() => setClasses(['p5'])}>p5</span>
       </span>)}
-      <div contentEditable={true} className={"text "+classes.join(' ')} onFocus={handleClick}>{data.content}</div>
+      <div contentEditable={true} className={"text "+classes.join(' ')}>{component.content}</div>
     </div>
   )
 }
@@ -74,7 +74,7 @@ const Component = ({ data, components, path, layout, isHeader }) => {
       case 'link':
           return (<a href="link" className="link" contentEditable={true}>{component.content}</a>)
       default: 
-        return <TextComponent data={component} />
+        return <TextComponent data={data} component={component} />
     }
   }
 
