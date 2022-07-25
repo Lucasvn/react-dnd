@@ -7,6 +7,7 @@ import Component from "./Component";
 const style = {};
 const Column = ({ data, components, handleDrop, path, layout, isHeader }) => {
   const ref = useRef(null);
+  console.log('column', data)
   const item = {
     type: COLUMN,
     isHeader,

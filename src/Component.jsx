@@ -33,6 +33,7 @@ const TextComponent = ({ data }) => {
 
 const Component = ({ data, components, path, layout, isHeader }) => {
   const ref = useRef(null);
+  console.log('path', path)
 
   const [{ isDragging }, drag] = useDrag({
     item: { type: COMPONENT, isHeader, id: data.id, path },
@@ -53,7 +54,10 @@ const Component = ({ data, components, path, layout, isHeader }) => {
   const opacity = isDragging ? 0 : 1;
   drag(ref);
 
+  console.log('data',data)
   const component = components[data.id];
+  console.log('component',component)
+  console.log('components',components)
 
   const renderComponentType = () => {
     switch (component.type) {

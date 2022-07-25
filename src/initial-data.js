@@ -2,81 +2,102 @@ import { COMPONENT, ROW, COLUMN } from "./constants";
 
 const initialData = {
   layout: {
-    header: [
+    "header": [
       {
-        type: ROW,
-        isHeader: true,
-        id: "row0",
-        children: [
+        "type": "row",
+        "isHeader": true,
+        "id": "row0",
+        "children": [
           {
-            type: COLUMN,
-            isHeader: true,
-            id: "column0",
-            children: [
+            "type": "column",
+            "isHeader": true,
+            "id": "column0",
+            "children": [
               {
-                type: COMPONENT,
-                isHeader: true,
-                id: "component0",
-              },
-            ],
-          },
-        ],
+                "type": "component",
+                "isHeader": true,
+                "id": "text-component",
+                "key": "jk190d2jk"
+              }
+            ]
+          }
+        ]
       },
       {
-        type: ROW,
-        isHeader: true,
-        id: "row1",
-        children: [
+        "type": "row",
+        "isHeader": true,
+        "id": "row1",
+        "children": [
           {
-            type: COLUMN,
-            isHeader: true,
-            id: "column1",
-            children: [
+            "type": "column",
+            "isHeader": true,
+            "id": "column1",
+            "children": [
               {
-                type: COMPONENT,
-                isHeader: true,
-                id: "component0",
-              },
-            ],
-          },
-        ],
-      },
+                "type": "component",
+                "isHeader": true,
+                "id": "text-component",
+                "key": "ki190sjk10"
+              }
+            ]
+          }
+        ]
+      }
     ],
-    body: [
+    "body": [
       {
-        type: ROW,
-        id: "row1",
-        children: [
+        "type": "row",
+        "id": "row1",
+        "children": [
           {
-            type: COLUMN,
-            id: "column1",
-            children: [
+            "type": "column",
+            "id": "column1",
+            "children": [
               {
-                type: COMPONENT,
-                id: "component0",
-              },
-            ],
+                "type": "component",
+                "id": "text-component",
+                "key": "k9s0d1k10"
+              }
+            ]
           },
           {
-            type: COLUMN,
-            id: "column2",
-            children: [
+            "type": "column",
+            "id": "column2",
+            "children": [
               {
-                type: COMPONENT,
-                id: "component1",
-              },
-            ],
-          },
-        ],
+                "type": "component",
+                "id": "result-component",
+                "key": "kls190a12q"
+              }
+            ]
+          }
+        ]
       },
-    ],
+      {
+        "type": "row",
+        "id": "h3iwa4hW7m",
+        "children": [
+          {
+            "type": "column",
+            "id": "0UwNswzXFI",
+            "children": [
+              {
+                "id": "panel-component",
+                "key": "uG8kkiFQ2",
+                "type": "component"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   components: {
-    component0: { id: "component0", type: "text", content: "Some text" },
-    component1: { id: "component1", type: "result", content: "Some result" },
-    component2: { id: "component2", type: "divider", content: "" },
-    component3: { id: "component3", type: "panel", content: "Some panel" },
-    component4: { id: "component4", type: "link", content: "Some link" },
+    "text-component": { id: "text-component", type: "text", content: "Some text" },
+    "result-component": { id: "result-component", type: "result", content: "Some result" },
+    "divider-component": { id: "divider-component", type: "divider", content: "" },
+    "panel-component": { id: "panel-component", type: "panel", content: "Some panel" },
+    "link-component": { id: "link-component", type: "link", content: "Some link" },
   },
 };
 

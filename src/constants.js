@@ -7,7 +7,8 @@ export const COMPONENT = "component";
 
 export const SIDEBAR_ITEMS = [
   {
-    id: shortid.generate(),
+    id: 'text-component',
+    key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "text",
@@ -15,7 +16,8 @@ export const SIDEBAR_ITEMS = [
     },
   },
   {
-    id: shortid.generate(),
+    id: 'result-component',
+    key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "result",
@@ -23,7 +25,8 @@ export const SIDEBAR_ITEMS = [
     },
   },
   {
-    id: shortid.generate(),
+    id: 'divider-component',
+    key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "divider",
@@ -31,7 +34,8 @@ export const SIDEBAR_ITEMS = [
     },
   },
   {
-    id: shortid.generate(),
+    id: 'panel-component',
+    key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "panel",
@@ -39,7 +43,8 @@ export const SIDEBAR_ITEMS = [
     },
   },
   {
-    id: shortid.generate(),
+    id: 'link-component',
+    key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "link",

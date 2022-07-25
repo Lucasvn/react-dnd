@@ -52,14 +52,18 @@ const Container = () => {
       if (item.type === SIDEBAR_ITEM) {
         // 1. Move sidebar item into page
         const newComponent = {
-          id: shortid.generate(),
+          key: shortid.generate(),
+          id: item.id,
           ...item.component
         };
+        console.log('newComponent', newComponent)
         const newItem = {
           id: newComponent.id,
+          key: newComponent.key,
           type: COMPONENT,
           isHeader: dropZone.isHeader
         };
+        console.log('newItem', newItem)
         setComponents({
           ...components,
           [newComponent.id]: newComponent
@@ -223,10 +227,6 @@ const Container = () => {
           <h3>JSON Resultante:</h3>
           <pre>{JSON.stringify({header, body}, undefined, 2)}</pre>
         </div>
-      </div>
-      
-      <div className="sideBar">
-        <StyleEdit data={{ disabled: disableStyle }} />
       </div>
     </div>
   );
