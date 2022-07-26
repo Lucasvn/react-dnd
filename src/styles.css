@@ -79,7 +79,6 @@ body {
 
 .column {
   flex: 1 1 100%;
-  border: 1px solid blue;
 }
 
 .toRight * {
@@ -100,7 +99,7 @@ body {
 }
 
 .row {
-  border: 1px solid red;
+  border: 1px dashed red;
   padding: 0;
 }
 
@@ -128,6 +127,34 @@ body {
 .printTemplate {
   border: 1px solid black;
   padding: 0.8rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: gray;
+  border-radius: 5px 5px 0 0;
+}
+
+.header .exam-title {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0px;
+}
+
+.header .exam-title h3 {
+  margin: 0;
+}
+
+.header .result {
+  align-self: center;
+}
+
+.header .exam-title p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #383737;
 }
 
 /* componentes: */

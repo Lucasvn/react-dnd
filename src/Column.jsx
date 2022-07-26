@@ -5,12 +5,11 @@ import DropZone from "./DropZone";
 import Component from "./Component";
 
 const style = {};
-const Column = ({ data, components, handleDrop, path, layout, isHeader }) => {
+const Column = ({ data, components, handleDrop, path, layout }) => {
   const ref = useRef(null);
   console.log('column', data)
   const item = {
     type: COLUMN,
-    isHeader,
     id: data.id,
     children: data.children,
     path,
@@ -38,7 +37,6 @@ const Column = ({ data, components, handleDrop, path, layout, isHeader }) => {
   const renderComponent = (component, currentPath) => {
     return (
       <Component
-        isHeader={isHeader}
         layout={layout}
         key={component.id}
         data={component}
@@ -63,7 +61,6 @@ const Column = ({ data, components, handleDrop, path, layout, isHeader }) => {
               data={{
                 path: currentPath,
                 childrenCount: data.children.length,
-                isHeader
               }}
               onDrop={handleDrop}
             />
@@ -75,7 +72,6 @@ const Column = ({ data, components, handleDrop, path, layout, isHeader }) => {
         data={{
           path: `${path}-${data.children.length}`,
           childrenCount: data.children.length,
-          isHeader
         }}
         onDrop={handleDrop}
         isLast

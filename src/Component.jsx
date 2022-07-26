@@ -31,12 +31,12 @@ const TextComponent = ({ data, component }) => {
   )
 }
 
-const Component = ({ data, components, path, layout, isHeader }) => {
+const Component = ({ data, components, path, layout }) => {
   const ref = useRef(null);
   console.log('path', path)
 
   const [{ isDragging }, drag] = useDrag({
-    item: { type: COMPONENT, isHeader, id: data.id, path },
+    item: { type: COMPONENT, id: data.id, path },
     canDrag: () => {
       const splitItemPath = path.split("-");
       const itemPathRowIndex = splitItemPath[0];

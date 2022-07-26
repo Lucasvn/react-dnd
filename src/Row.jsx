@@ -5,13 +5,12 @@ import DropZone from "./DropZone";
 import Column from "./Column";
 
 const style = {};
-const Row = ({ data, components, handleDrop, path, layout, isHeader }) => {
+const Row = ({ data, components, handleDrop, path, layout }) => {
   const ref = useRef(null);
 
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: ROW,
-      isHeader,
       id: data.id,
       children: data.children,
       path
@@ -24,10 +23,9 @@ const Row = ({ data, components, handleDrop, path, layout, isHeader }) => {
   const opacity = isDragging ? 0 : 1;
   drag(ref);
 
-  const renderColumn = (column, currentPath, isHeader) => {
+  const renderColumn = (column, currentPath) => {
     return (
       <Column
-        isHeader={isHeader}
         layout={layout}
         key={column.id}
         data={column}
@@ -50,12 +48,11 @@ const Row = ({ data, components, handleDrop, path, layout, isHeader }) => {
                 data={{
                   path: currentPath,
                   childrenCount: data.children.length,
-                  isHeader
                 }}
                 onDrop={handleDrop}
                 className="horizontalDrag"
               />
-              {renderColumn(column, currentPath, isHeader)}
+              {renderColumn(column, currentPath)}
             </React.Fragment>
           );
         })}
@@ -63,7 +60,6 @@ const Row = ({ data, components, handleDrop, path, layout, isHeader }) => {
           data={{
             path: `${path}-${data.children.length}`,
             childrenCount: data.children.length,
-            isHeader
           }}
           onDrop={handleDrop}
           className="horizontalDrag"

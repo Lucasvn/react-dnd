@@ -18,32 +18,24 @@ import StyleEdit from "./StyleEdit";
 
 const Container = () => {
   const initialBody = initialData.layout.body;
-  const initialHeader = initialData.layout.header;
   const initialComponents = initialData.components;
   const [body, setBody] = useState(initialBody);
-  const [header, setHeader] = useState(initialHeader);
   const [components, setComponents] = useState(initialComponents);
 
   const handleDropToTrashBin = useCallback(
     (dropZone, item) => {
       const splitItemPath = item.path.split("-");
-      console.log('item', item)
-      !!item.isHeader ?
-        setHeader(handleRemoveItemFromLayout(header, splitItemPath))
-        : setBody(handleRemoveItemFromLayout(body, splitItemPath));
+      setBody(handleRemoveItemFromLayout(body, splitItemPath));
     },
-    [body, header]
+    [body]
   );
 
   const handleDrop = useCallback(
     (dropZone, item) => {
-      console.log('dropZone', dropZone)
-      console.log('item', item)
-
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
 
-      const newItem = { id: item.id, type: item.type, isHeader: dropZone.isHeader, children: item.children };
+      const newItem = { id: item.id, type: item.type, children: item.children };
       if (item.type === COLUMN) {
         newItem.children = item.children;
       }
@@ -56,32 +48,24 @@ const Container = () => {
           id: item.id,
           ...item.component
         };
-        console.log('newComponent', newComponent)
+
         const newItem = {
           id: newComponent.id,
           key: newComponent.key,
-          type: COMPONENT,
-          isHeader: dropZone.isHeader
+          type: COMPONENT
         };
-        console.log('newItem', newItem)
+
         setComponents({
           ...components,
           [newComponent.id]: newComponent
         });
 
-        !!dropZone.isHeader 
-          ? setHeader(
-              handleMoveSidebarComponentIntoParent(
-                header,
-                splitDropZonePath,
-                newItem
-              )) 
-          : setBody(
-              handleMoveSidebarComponentIntoParent(
-                body,
-                splitDropZonePath,
-                newItem
-              ));
+        setBody(
+          handleMoveSidebarComponentIntoParent(
+            body,
+            splitDropZonePath,
+            newItem
+          ));
         return;
       }
 
@@ -93,71 +77,30 @@ const Container = () => {
       if (splitItemPath.length === splitDropZonePath.length) {
         // 2.a. move within parent
         if (pathToItem === pathToDropZone) {
-          !!dropZone.isHeader ?
-            setHeader(
-              handleMoveWithinParent(header, splitDropZonePath, splitItemPath)
-            )
-            : setBody(
-              handleMoveWithinParent(body, splitDropZonePath, splitItemPath)
-            );
+          setBody(
+            handleMoveWithinParent(body, splitDropZonePath, splitItemPath)
+          );
           return;
         }
       }
 
-      if (item.isHeader !== dropZone.isHeader) {
-        if (!!item.isHeader) {
-          setBody(
-            handleMoveToDifferentParent(
-              body,
-              splitDropZonePath,
-              splitItemPath,
-              newItem
-            )
-          )
-        } else {
-          setHeader(
-            handleMoveToDifferentParent(
-              header,
-              splitDropZonePath,
-              splitItemPath,
-              newItem
-            )
-          )
-        }
-        handleDropToTrashBin(dropZone, item)
-        return
-      }
-
       // 3. Move + Create
-      !!dropZone.isHeader ?
-        setHeader(
-          handleMoveToDifferentParent(
-            header,
-            splitDropZonePath,
-            splitItemPath,
-            newItem
-          )
+      setBody(
+        handleMoveToDifferentParent(
+          body,
+          splitDropZonePath,
+          splitItemPath,
+          newItem
         )
-        : setBody(
-          handleMoveToDifferentParent(
-            body,
-            splitDropZonePath,
-            splitItemPath,
-            newItem
-          )
-        );
+      );
     },
-    [body, header, components]
+    [body, components]
   );
 
-  const [disableStyle, setDisableStyle] = useState(true)
-
-
-  const renderRow = (row, currentPath, isHeader = false) => {
+  const renderRow = (row, currentPath) => {
     return (
       <Row
-        isHeader={isHeader}
-        layout={isHeader ? header : body}
+        layout={body}
         key={row.id}
         data={row}
         handleDrop={handleDrop}
@@ -177,16 +120,12 @@ const Container = () => {
         ))}
       </div>
       <div className="pageContainer">
-        <div className="page">
-          {header.map((row, index) => {
-            const currentPath = `${index}`;
-
-            return (
-              <React.Fragment key={row.id}>
-                {renderRow(row, currentPath, true)}
-              </React.Fragment>
-            );
-          })}
+        <div className="page header">
+          <div className="exam-title">
+            <h3>Nome do exame</h3>
+            <p>Intervalo de referência</p>
+          </div>
+          <div className="result">Resultado</div>
         </div>
         <div className="page">
           {body.map((row, index) => {
@@ -218,14 +157,13 @@ const Container = () => {
 
         <TrashDropZone
           data={{
-            body,
-            header
+            body
           }}
           onDrop={handleDropToTrashBin}
         />
         <div className="printTemplate">
           <h3>JSON Resultante:</h3>
-          <pre>{JSON.stringify({header, body}, undefined, 2)}</pre>
+          <pre>{JSON.stringify({body}, undefined, 2)}</pre>
         </div>
       </div>
     </div>
