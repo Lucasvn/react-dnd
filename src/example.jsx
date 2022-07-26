@@ -14,7 +14,6 @@ import {
 
 import { SIDEBAR_ITEMS, SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
 import shortid from "shortid";
-import StyleEdit from "./StyleEdit";
 
 const Container = () => {
   const initialBody = initialData.layout.body;
