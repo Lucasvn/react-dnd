@@ -2,56 +2,14 @@ import { COMPONENT, ROW, COLUMN } from "./constants";
 
 const initialData = {
   layout: {
-    "header": [
-      {
-        "type": "row",
-        "isHeader": true,
-        "id": "row0",
-        "children": [
-          {
-            "type": "column",
-            "isHeader": true,
-            "id": "column0",
-            "children": [
-              {
-                "type": "component",
-                "isHeader": true,
-                "id": "text-component",
-                "key": "jk190d2jk"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "row",
-        "isHeader": true,
-        "id": "row1",
-        "children": [
-          {
-            "type": "column",
-            "isHeader": true,
-            "id": "column1",
-            "children": [
-              {
-                "type": "component",
-                "isHeader": true,
-                "id": "text-component",
-                "key": "ki190sjk10"
-              }
-            ]
-          }
-        ]
-      }
-    ],
     "body": [
       {
         "type": "row",
-        "id": "row1",
+        "key": "row1",
         "children": [
           {
             "type": "column",
-            "id": "column1",
+            "key": "column1",
             "children": [
               {
                 "type": "component",
@@ -63,7 +21,7 @@ const initialData = {
           },
           {
             "type": "column",
-            "id": "column2",
+            "key": "column2",
             "children": [
               {
                 "type": "component",
@@ -76,11 +34,11 @@ const initialData = {
       },
       {
         "type": "row",
-        "id": "h3iwa4hW7m",
+        "key": "h3iwa4hW7m",
         "children": [
           {
             "type": "column",
-            "id": "0UwNswzXFI",
+            "key": "0UwNswzXFI",
             "children": [
               {
                 "id": "panel-component",

@@ -101,7 +101,7 @@ const Container = () => {
     return (
       <Row
         layout={body}
-        key={row.id}
+        key={row.key}
         data={row}
         handleDrop={handleDrop}
         components={components}
@@ -132,7 +132,7 @@ const Container = () => {
             const currentPath = `${index}`;
 
             return (
-              <React.Fragment key={row.id}>
+              <React.Fragment key={row.key}>
                 <DropZone
                   data={{
                     path: currentPath,

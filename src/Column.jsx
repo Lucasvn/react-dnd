@@ -10,7 +10,7 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
   console.log('column', data)
   const item = {
     type: COLUMN,
-    id: data.id,
+    key: data.key,
     children: data.children,
     path,
   }
@@ -38,7 +38,7 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
     return (
       <Component
         layout={layout}
-        key={component.id}
+        key={component.key}
         data={component}
         components={components}
         path={currentPath}
@@ -56,7 +56,7 @@ const Column = ({ data, components, handleDrop, path, layout }) => {
         const currentPath = `${path}-${index}`;
 
         return (
-          <React.Fragment key={component.id} >
+          <React.Fragment key={component.key} >
             <DropZone
               data={{
                 path: currentPath,

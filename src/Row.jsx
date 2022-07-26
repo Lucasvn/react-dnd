@@ -11,7 +11,7 @@ const Row = ({ data, components, handleDrop, path, layout }) => {
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: ROW,
-      id: data.id,
+      key: data.key,
       children: data.children,
       path
     },
@@ -27,7 +27,7 @@ const Row = ({ data, components, handleDrop, path, layout }) => {
     return (
       <Column
         layout={layout}
-        key={column.id}
+        key={column.key}
         data={column}
         components={components}
         handleDrop={handleDrop}
@@ -43,7 +43,7 @@ const Row = ({ data, components, handleDrop, path, layout }) => {
           const currentPath = `${path}-${index}`;
 
           return (
-            <React.Fragment key={column.id}>
+            <React.Fragment key={column.key}>
               <DropZone
                 data={{
                   path: currentPath,
