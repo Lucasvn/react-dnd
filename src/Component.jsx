@@ -9,7 +9,7 @@ const style = {
   display: 'flex'
 };
 
-const TextComponent = ({ data, component }) => {
+const TextComponent = ({ data, component, path, handleContentChange }) => {
   const [isSelected, setIsSelected] = useState(false)
   const handleClick = () => {
     setIsSelected(!isSelected)
@@ -26,12 +26,18 @@ const TextComponent = ({ data, component }) => {
         <span onClick={() => setClasses(['p4'])}>p4</span>
         <span onClick={() => setClasses(['p5'])}>p5</span>
       </span>)}
-      <div contentEditable={true} className={"text "+classes.join(' ')}>{component.content}</div>
+      <div 
+        contentEditable={true} 
+        className={"text "+classes.join(' ')} 
+        onInput={(e) => handleContentChange(path, e.currentTarget.textContent)}
+        >
+          {data.content ?? component.content}
+      </div>
     </div>
   )
 }
 
-const Component = ({ data, components, path, layout }) => {
+const Component = ({ data, components, path, layout, handleContentChange }) => {
   const ref = useRef(null);
   console.log('path', path)
 
@@ -62,19 +68,19 @@ const Component = ({ data, components, path, layout }) => {
   const renderComponentType = () => {
     switch (component.type) {
       case 'image':
-          return (<div className="image">{component.content}</div>)
+          return (<div className="image">{data.content ?? component.content}</div>)
       case 'table':
-          return (<div className="table">{component.content}</div>)
+          return (<div className="table">{data.content ?? component.content}</div>)
       case 'result':
-          return (<div className="result" contentEditable={true}>{component.content}</div>)
+          return (<div className="result" contentEditable={true}>{data.content ?? component.content}</div>)
       case 'divider':
           return (<hr className="divider" />)
       case 'panel':
-          return (<div className="panel" contentEditable={true}>{component.content}</div>)
+          return (<div className="panel" contentEditable={true}>{data.content ?? component.content}</div>)
       case 'link':
-          return (<a href="link" className="link" contentEditable={true}>{component.content}</a>)
+          return (<a href="link" className="link" contentEditable={true}>{data.content ?? component.content}</a>)
       default: 
-        return <TextComponent data={data} component={component} />
+        return <TextComponent data={data} path={path} component={component} handleContentChange={handleContentChange} />
     }
   }
 

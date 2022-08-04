@@ -5,7 +5,7 @@ import DropZone from "./DropZone";
 import Column from "./Column";
 
 const style = {};
-const Row = ({ data, components, handleDrop, path, layout }) => {
+const Row = ({ data, components, handleDrop, path, layout, handleContentChange }) => {
   const ref = useRef(null);
 
   const [{ isDragging }, drag] = useDrag({
@@ -32,6 +32,7 @@ const Row = ({ data, components, handleDrop, path, layout }) => {
         components={components}
         handleDrop={handleDrop}
         path={currentPath}
+        handleContentChange={handleContentChange}
       />
     );
   };

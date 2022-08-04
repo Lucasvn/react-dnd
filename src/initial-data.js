@@ -15,7 +15,8 @@ const initialData = {
                 "type": "component",
                 "id": "text-component",
                 "key": "k9s0d1k10",
-                "styles": ["p4"]
+                "styles": ["p4"],
+                "content": "test content"
               }
             ]
           },

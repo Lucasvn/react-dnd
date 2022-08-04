@@ -29,6 +29,18 @@ const Container = () => {
     [body]
   );
 
+  const handleContentChange = (itemPath, newContent) => {
+    const splitItemPath = itemPath.split("-");
+    const pathRowIndex = splitItemPath[0];
+    const pathColumnIndex = splitItemPath[1]
+    const pathComponentIndex = splitItemPath[2]
+    const newBody = body
+    newBody[pathRowIndex]
+      .children[pathColumnIndex]
+      .children[pathComponentIndex].content = newContent
+    setBody(newBody)
+  }
+
   const handleDrop = useCallback(
     (dropZone, item) => {
       const splitDropZonePath = dropZone.path.split("-");
@@ -105,6 +117,7 @@ const Container = () => {
         handleDrop={handleDrop}
         components={components}
         path={currentPath}
+        handleContentChange={handleContentChange}
       />
     );
   };
