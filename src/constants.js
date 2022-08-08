@@ -7,7 +7,7 @@ export const COMPONENT = "component";
 
 export const SIDEBAR_ITEMS = [
   {
-    id: 'text-component',
+    id: "text-component",
     key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
@@ -16,7 +16,7 @@ export const SIDEBAR_ITEMS = [
     },
   },
   {
-    id: 'result-component',
+    id: "result-component",
     key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
@@ -25,7 +25,7 @@ export const SIDEBAR_ITEMS = [
     },
   },
   {
-    id: 'divider-component',
+    id: "divider-component",
     key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
@@ -34,7 +34,7 @@ export const SIDEBAR_ITEMS = [
     },
   },
   {
-    id: 'panel-component',
+    id: "panel-component",
     key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
@@ -43,12 +43,36 @@ export const SIDEBAR_ITEMS = [
     },
   },
   {
-    id: 'link-component',
+    id: "link-component",
     key: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "link",
       content: "Some link",
+    },
+  },
+  {
+    id: "table-component",
+    key: shortid.generate(),
+    type: SIDEBAR_ITEM,
+    component: {
+      type: "table",
+      content: {
+        columns: [
+          { field: "firstHeader", headerName: "First Header", editable: true },
+          {
+            field: "secondHeader",
+            headerName: "Second Header",
+            editable: true,
+          },
+        ],
+        rows: [
+          {
+            firstHeader: "First row",
+            secondHeader: "Second row",
+          },
+        ],
+      },
     },
   },
 ];

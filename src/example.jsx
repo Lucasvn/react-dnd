@@ -29,16 +29,17 @@ const Container = () => {
     [body]
   );
 
-  const handleContentChange = (itemPath, newContent) => {
+  const handleComponentChange = (itemPath, changeType, value) => {
+    console.log(`changing ${changeType} to ${value}`)
     const splitItemPath = itemPath.split("-");
     const pathRowIndex = splitItemPath[0];
     const pathColumnIndex = splitItemPath[1]
     const pathComponentIndex = splitItemPath[2]
-    const newBody = body
-    newBody[pathRowIndex]
+    body[pathRowIndex]
       .children[pathColumnIndex]
-      .children[pathComponentIndex].content = newContent
-    setBody(newBody)
+      .children[pathComponentIndex][changeType] = value
+    console.log(body)
+    setBody([...body])
   }
 
   const handleDrop = useCallback(
@@ -63,7 +64,8 @@ const Container = () => {
         const newItem = {
           id: newComponent.id,
           key: newComponent.key,
-          type: COMPONENT
+          type: COMPONENT,
+          ...newComponent
         };
 
         setComponents({
@@ -117,7 +119,7 @@ const Container = () => {
         handleDrop={handleDrop}
         components={components}
         path={currentPath}
-        handleContentChange={handleContentChange}
+        handleComponentChange={handleComponentChange}
       />
     );
   };

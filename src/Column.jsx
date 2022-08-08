@@ -5,7 +5,7 @@ import DropZone from "./DropZone";
 import Component from "./Component";
 
 const style = {};
-const Column = ({ data, components, handleDrop, path, layout, handleContentChange }) => {
+const Column = ({ data, components, handleDrop, path, layout, handleComponentChange }) => {
   const ref = useRef(null);
   console.log('column', data)
   const item = {
@@ -42,7 +42,7 @@ const Column = ({ data, components, handleDrop, path, layout, handleContentChang
         data={component}
         components={components}
         path={currentPath}
-        handleContentChange={handleContentChange}
+        handleComponentChange={handleComponentChange}
       />
     );
   };
